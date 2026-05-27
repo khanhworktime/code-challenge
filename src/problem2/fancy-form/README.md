@@ -10,9 +10,9 @@ bun install
 bun dev
 ```
 
-No env require
+No env required
 
-This repo has been deploy in: https://code-challenge-eight-mocha.vercel.app/
+This repo has been deployed in: https://code-challenge-eight-mocha.vercel.app/
 
 Notes:
 
