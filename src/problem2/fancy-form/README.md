@@ -16,6 +16,6 @@ This repo has been deployed in: https://code-challenge-eight-mocha.vercel.app/
 
 Notes:
 
-- Wallet was connected with fake balances.
-- The tokens on the giving api return multiple duplicate, I have been filter it to solve the duplicate.
+- Wallet was connected with a mock balance.
+- The tokens on the giving api return multiple duplicate, I had been filtered it to solve the duplicate.
 - All other information like Network fee, Platform fee was fake.
