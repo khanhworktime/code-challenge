@@ -6,7 +6,10 @@ import {
 } from "@/constants/mock.const";
 import { mutateKeyBuilder } from "@/hooks/useSubmitSwap";
 import type { SwapRequire } from "@/types/Swap.interface";
-import { calculateRate, calculateReceiveAmount } from "@/utils/swap-calculation";
+import {
+  calculateRate,
+  calculateReceiveAmount,
+} from "@/utils/swap-calculation";
 import { useForm } from "@tanstack/react-form";
 import { useIsMutating } from "@tanstack/react-query";
 import { ArrowDown, LucideLoaderPinwheel } from "lucide-react";
@@ -18,6 +21,7 @@ import { Button } from "../animate-ui/components/buttons/button";
 import BorderGlow from "../BorderGlow";
 import { TokenSelector } from "../token-selector";
 import { SwapAlertModal } from "./swap-alert";
+import { cn } from "@/lib/utils";
 
 interface SwapFormInputs {
   payToken: string | null;
@@ -118,7 +122,7 @@ export function SwapForm() {
         colors={["#c084fc", "#f472b6", "#38bdf8"]}
         className="outline outline-muted"
       >
-        <div className="overflow-hidden rounded-[13px]">
+        <div className="overflow-hidden rounded-[11px]">
           {/* Pay */}
           <div className="w-full py-4 pl-4 pr-2 bg-card text-card-foreground space-y-4">
             <h2 className="text-xs text-muted-foreground">You pay</h2>
@@ -127,10 +131,13 @@ export function SwapForm() {
               <form.Field
                 name={"payAmount"}
                 validators={{
-                  onChange: ({ value }) =>
-                    !Number(value)
-                      ? "Token amount must greater than 0"
-                      : undefined,
+                  onChange: ({ value }) => {
+                    if (!Number(value))
+                      return "Token amount must greater than 0";
+                    if (Number(value) > MOCK_MAX_BALANCE)
+                      return "Insufficent fund";
+                    return undefined;
+                  },
                   onChangeAsyncDebounceMs: 500,
                 }}
               >
@@ -139,7 +146,10 @@ export function SwapForm() {
                     <input
                       name={field.name}
                       placeholder="1.82"
-                      className="text-3xl"
+                      className={cn(
+                        "text-3xl transition-colors",
+                        !field.state.meta.isValid ? "!text-red-800" : "",
+                      )}
                       value={field.state.value?.replaceAll(",", ".") || ""}
                       onBlur={field.handleBlur}
                       onChange={(e) =>
@@ -191,7 +201,12 @@ export function SwapForm() {
                   {({ values: { payToken } }) => {
                     const payTokenMetadata = getTokenMetadata(payToken);
 
-                    return <>${payTokenMetadata?.price}</>;
+                    return (
+                      <>
+                        {payTokenMetadata?.price &&
+                          `$${payTokenMetadata?.price}`}
+                      </>
+                    );
                   }}
                 </form.Subscribe>
               </span>
@@ -273,7 +288,12 @@ export function SwapForm() {
                   {({ values: { receiveToken } }) => {
                     const receiveTokenMetadata = getTokenMetadata(receiveToken);
 
-                    return <>${receiveTokenMetadata?.price}</>;
+                    return (
+                      <>
+                        {receiveTokenMetadata?.price &&
+                          `$${receiveTokenMetadata?.price}`}
+                      </>
+                    );
                   }}
                 </form.Subscribe>
               </span>

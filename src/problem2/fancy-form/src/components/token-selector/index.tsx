@@ -51,7 +51,10 @@ export function TokenSelector({
         )}
       >
         {value && <TokenIcon currency={value} />}
-        <SelectValue placeholder="-" />
+        <SelectValue
+          className={"w-10 overflow-hidden text-eclipse"}
+          placeholder="-"
+        />
       </SelectTrigger>
       <SelectContent>
         {displayList?.map((item) => (

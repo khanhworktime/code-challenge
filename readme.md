@@ -1,10 +1,22 @@
-# 99Tech Code Challenge #1 #
+# 99Tech Code Challenge #1
 
-Note that if you fork this repository, your responses may be publicly linked to this repo.  
-Please submit your application along with the solutions attached or linked.   
+## Problem 1: Three ways to sum to n
 
-It is important that you minimally attempt the problems, even if you do not arrive at a working solution.
+- The [answer file](src/problem1/index.js)
+- The [test file](src/problem1/test.js)
+- Terminal log:
+  ![Terminal Of Test file](assets/problem1.png)
 
-## Submission ##
-You can either provide a link to an online repository, attach the solution in your application, or whichever method you prefer.
-We're cool as long as we can view your solution without any pain.
+## Problem 2: Fancy Form
+
+- Product site [Fancy Form](https://code-challenge-ccc3qxr6q-khanhworktimes-projects.vercel.app/)
+- [Source code](src/problem2/fancy-form) using Vite + React for lite fast demo
+
+- Preview:
+  ![Fancy Form Preview](assets/problem2.png)
+
+## Problem 3: Messy React
+
+- Problem files: [Messy React](src/problem3/problem.tsx)
+- Fixed: [Optimized File](src/problem3/fixed.tsx)
+- Explaination: [Docs](src/problem3/explaination.md)

@@ -5,15 +5,16 @@ import type { Wallet } from "../types/Wallet.interface";
 export const QUERY_KEY = "get_wallet";
 
 // Sleeping for 2 seconds
-export const mockPending = 2_000;
+export const MOCK_PENDING = 2_000;
+const MOCK_BALANCE = 12_523;
 
 export function useGetWallet() {
   const queryReturn = useQuery({
     queryKey: [QUERY_KEY],
     queryFn: async (): Promise<Wallet> => {
-      await sleep(mockPending);
+      await sleep(MOCK_PENDING);
       return {
-        balance: 12_000_123,
+        balance: MOCK_BALANCE,
         isConnected: true,
       };
     },
