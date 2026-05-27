@@ -9,7 +9,7 @@
 
 ## Problem 2: Fancy Form
 
-- Product site [Fancy Form](https://code-challenge-ccc3qxr6q-khanhworktimes-projects.vercel.app/)
+- Product site [Fancy Form](https://code-challenge-eight-mocha.vercel.app/)
 - [Source code](src/problem2/fancy-form) using Vite + React for lite fast demo
 
 - Preview:
