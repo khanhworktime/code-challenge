@@ -132,7 +132,7 @@ export function SwapForm() {
                 name={"payAmount"}
                 validators={{
                   onChange: ({ value }) => {
-                    if (!Number(value))
+                    if (!Number(value) || Number(value) <= 0)
                       return "Token amount must greater than 0";
                     if (Number(value) > MOCK_MAX_BALANCE)
                       return "Insufficent fund";
